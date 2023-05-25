@@ -1,8 +1,4 @@
-
 #pragma once
-
-
-//为什么这句话要先放在这里，放在外面就会编译不通过
 #include<iostream>
 #include<string>
 using namespace std;

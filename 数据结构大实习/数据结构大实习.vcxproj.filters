@@ -36,10 +36,13 @@
     <ClCompile Include="ShortestPath.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Mutual.cpp">
+    <ClCompile Include="oneRoute.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="oneRoute.cpp">
+    <ClCompile Include="Traverse.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mutual.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,6 +63,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Mutual.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Traverse.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

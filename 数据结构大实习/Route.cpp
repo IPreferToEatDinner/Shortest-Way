@@ -6,8 +6,7 @@
 //解决诡异的freopen_s
 # pragma warning ( disable:4996 )
 
-//解决它认为我for循环不对的问题
-# pragma warning ( disable:6294 )
+
 
 //解决freopen没有返回值的问题（我现在根本不会用，只能眼不见为净）
 # pragma warning ( disable:6031 )
@@ -23,6 +22,7 @@ Route::~Route()
 	delete[] routes;
 }
 
+//输入城市名，返回矩阵下标（其实是自己的下标，但是也刚好是矩阵的）
 int Route::getnumber(const char* filename)
 {
     FILE* fp = nullptr;
@@ -39,13 +39,13 @@ int Route::getnumber(const char* filename)
     else
     {
         char buffer[1000];
-        for (; fgets(buffer, sizeof(buffer) / sizeof(buffer[0]), fp) != nullptr; ++count) 
-        {}
+        for (; fgets(buffer, sizeof(buffer) / sizeof(buffer[0]), fp) != nullptr; ++count) {}
     }
 
     return count;
 }
 
+//就是字面意思
 void Route::ReadRoutes(void)
 {
     
@@ -98,7 +98,4 @@ void Route::ReadRoutes(void)
     
     fclose(stdin);
     freopen("CON", "r", stdin);
-
-    //读取最短路径函数的空间复杂度
-    //cout << "ReadRoutes->Use of space:" << size << endl;
 }

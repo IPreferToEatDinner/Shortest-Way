@@ -54,8 +54,6 @@ void City::ReadCities(void)
     }
     fclose(stdin); //文件关闭
 
-    //读取城市信息函数的空间复杂度
-    //cout << "ReadCities->Use of space:" << size << endl;
 }
 
 int City::getnumber(const char* filename)

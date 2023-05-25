@@ -10,43 +10,50 @@ GraphMatrix::GraphMatrix(City& inputCity,Route& inputRoute) : tempCity(inputCity
 
 int GraphMatrix::Locate(string city, City& _city)
 {
-    for (int i = 0; i < 199; i++) {
+    for (int i = 0; i < size; i++) 
+    {
         if (_city.cities[i].m_city == city)
         {
             return i;   //找到了则返回找到该城市的的编号
         }
     }
-    return -1;   //否则返回-1
+
+    //如果输入错误
+    cout << "-----------------" << endl
+        << "城市名字输入错误" << endl
+        << "-----------------" << endl;
+    exit(0);
 }
 
 
 void GraphMatrix::CreateMatrixGraph()
 {
-    //新建一个二维矩阵
+
+    //先开辟二维数组的纵列
     _Graph = new oneGraph * [size];
-    for (int i = 0; i < size; ++i)
+
+    for (int i = 0; i < this->size; ++i)
     {
+        //新建二维数组，一边新建一边写入
         _Graph[i] = new oneGraph[size];
-    }
 
-
-
-    for (int i = 0; i < this->size; i++)
-    {
-        for (int j = 0; j < this->size; j++)
+        for (int j = 0; j < this->size; ++j)
         {
             if (i == j)
             {
-                _Graph[i][j].m_cost = _Graph[i][j].m_time = 0;   //初始化所有自身连接为0
+                //初始化所有自身连接为0
+                _Graph[i][j].m_cost = _Graph[i][j].m_time = 0;   
             }
             else
             {
-                _Graph[i][j].m_cost = MAX;   //初始化外界连接为最大值
+                //初始化外界连接为最大值
+                _Graph[i][j].m_cost = MAX;  
                 _Graph[i][j].m_time = MAX;
             }
         }
     }
 
+    //矩阵写入(其实我感觉可以继续优化一下，把这个循环放在上面去，就可以实现时间复杂度的进一步降低)
     for (int i = 0; i < this->tempRoute.size; i++)
     {
         int begin, end;
@@ -57,17 +64,12 @@ void GraphMatrix::CreateMatrixGraph()
         _Graph[begin][end].routes = &tempRoute.routes[i];   //将路程赋给路程指针储存
     }
 
-    //图的邻接矩阵的空间复杂度
-    //int totalSize = tempRoute.size + this->size + tempCity.size;
-    //cout << "CreateMatrixGraph->Use of space:" << totalSize << endl;
 }
 
 
 GraphMatrix::~GraphMatrix()
 {
-    //新建一个二维指针
-    for (int i = 0; i < size; i++)
-    {
-        delete[] _Graph[i];
-    }
+    //只需要删掉数组的索引什么的就好
+    //因为我也写了其他地方的析构函数
+    delete[] _Graph;
 }
